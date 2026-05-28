@@ -96,7 +96,7 @@ For an example see `./example/library-usage-via-JavaScript/`.
 
 ## Why should I use this?
 
-If you've ever used `tslint`'s [no-unused-variable](http://palantir.github.io/tslint/rules/no-unused-variable/) rule you already known how awesome it is. What this rule does is detect code in your modules that is not being used so that you can remove it.
+If you've ever used ESLint's [@typescript-eslint/no-unused-vars](https://typescript-eslint.io/rules/no-unused-vars/) rule you already known how awesome it is. What this rule does is detect code in your modules that is not being used so that you can remove it.
 
 For example, say that you refactored your `math.ts` module so that you no longer use `add1`:
 
@@ -108,15 +108,15 @@ function add1(x: number) {
 export default (x: number) => x + 1;
 ```
 
-When run, `tslint` will complain that `add1` is no longer in use.
+When run, the ESLint `@typescript-eslint/no-unused-vars` rule will complain that `add1` is no longer in use.
 
-Unfortunately, if your symbols are exported, `tslint` does not complain anymore. Effectively `export`ing a symbol anchors the symbol so that, even if nobody uses it, it will not be marked as dead code.
+Unfortunately, if your symbols are exported, ESLint does not complain anymore. Effectively `export`ing a symbol anchors the symbol so that, even if nobody uses it, it will not be marked as dead code.
 
 If you've ever found yourself mid-refactor fixing a particularly fiendish function only to realize later that nobody really uses it you know exactly what I mean.
 
 `ts-unused-exports` fills this cross-module gap by complaining about exported symbols that no-one cares about.
 
-In this sense, `ts-unused-exports` does not replace `tslint` but rather complements it by helping you detect unnecessary exports. Once those are fixed, `tslint`'s `no-unused-variable` rule will kick in and tell you which code you can safely remove.
+In this sense, `ts-unused-exports` does not replace ESLint but rather complements it by helping you detect unnecessary exports. Once those are fixed, the ESLint `@typescript-eslint/no-unused-vars` rule will kick in and tell you which code you can safely remove.
 
 ## Example
 
